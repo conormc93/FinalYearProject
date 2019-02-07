@@ -1,0 +1,64 @@
+DROP DATABASE IF EXISTS `inventory`;
+CREATE DATABASE `inventory`;
+USE `inventory`;
+
+
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE IF NOT EXISTS `users` (
+	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL
+) ENGINE = INNODB ;
+
+
+
+DROP TABLE IF EXISTS `customers`;
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	cust_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	cust_name VARCHAR(255) NOT NULL,
+	cust_address VARCHAR(255) NOT NULL,
+	cust_phone VARCHAR(255) NOT NULL
+) ENGINE = INNODB ;
+
+
+
+DROP TABLE IF EXISTS `products`;
+
+CREATE TABLE IF NOT EXISTS `products` (
+	product_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	product_name VARCHAR(255) NOT NULL,
+	product_cost VARCHAR(255) NOT NULL,
+	product_sell VARCHAR(255) NOT NULL,
+	product_qty VARCHAR(255) NOT NULL
+) ENGINE = INNODB ;
+
+
+
+DROP TABLE IF EXISTS `orders`;
+
+CREATE TABLE IF NOT EXISTS `orders` (
+	order_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	cust_id BIGINT NOT NULL,
+	order_total VARCHAR(255) NOT NULL,
+	order_type VARCHAR(255) NOT NULL,
+	order_date VARCHAR(255) NOT NULL,
+	FOREIGN KEY (`cust_id`) REFERENCES `customers`(`cust_id`)
+) ENGINE = INNODB ;
+
+
+
+DROP TABLE IF EXISTS `orderDetails`;
+
+CREATE TABLE IF NOT EXISTS `orderDetails` (
+	orderD_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	order_id BIGINT NOT NULL,
+	product_id BIGINT NOT NULL,
+	price VARCHAR(255) NOT NULL,
+	qty VARCHAR(255) NOT NULL,
+	FOREIGN KEY (`order_id`) REFERENCES `orders`(`order_id`),
+	FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`)
+) ENGINE = INNODB ;
+
