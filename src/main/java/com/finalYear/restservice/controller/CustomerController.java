@@ -1,5 +1,13 @@
 package com.finalYear.restservice.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,46 +18,72 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finalYear.restservice.entity.Customer;
-import com.finalYear.restservice.entity.User;
-import com.finalYear.restservice.repository.CustomerRepository;
+import  com.finalYear.restservice.repository.CustomerRepository;
 
-import javassist.tools.web.BadHttpRequest;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "/customers")
+@RequestMapping("/api")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository repository;
+	@Autowired
+	CustomerRepository repository;
 
-    @GetMapping
-    public Iterable<Customer> findAll() {
-        return repository.findAll();
-    }
+	@GetMapping("/customers")
+	public List<Customer> getAllCustomers() {
+		System.out.println("Get all Customers...");
 
-    @GetMapping(path = "/{cname}")
-    public Customer find(@PathVariable("cname") String cname) {
-        return repository.findOne(cname);
-    }
+		List<Customer> customers = new ArrayList<>();
+		repository.findAll().forEach(customers::add);
 
-    @PostMapping(consumes = "application/json")
-    public Customer create(@RequestBody Customer customer) {
-        return repository.save(customer);
-    }
+		return customers;
+	}
 
-    @DeleteMapping(path = "/{cname}")
-    public void delete(@PathVariable("cname") String cname) {
-        repository.delete(cname);
-    }
+	@PostMapping(value = "/customers/create")
+	public Customer postCustomer(@RequestBody Customer customer) {
 
-    @PutMapping(path = "/{cname}")
-    public Customer update(@PathVariable("cname") String cname, @RequestBody Customer customer) throws BadHttpRequest {
-        if (repository.exists(cname)) {
-            customer.setCname(cname);
-            return repository.save(customer);
-        } else {
-            throw new BadHttpRequest();
-        }
-    }
+		Customer _customer = repository.save(new Customer(customer.getCname(), customer.getAddress(), customer.getPhone()));
+		return _customer;
+	}
 
+	@DeleteMapping("/customers/{cid}")
+	public ResponseEntity<String> deleteCustomer(@PathVariable("cid") long cid) {
+		System.out.println("Delete Customer with CID = " + cid + "...");
+
+		repository.deleteByCid(cid);
+
+		return new ResponseEntity<>("Customer has been deleted!", HttpStatus.OK);
+	}
+
+	@DeleteMapping("/customers/delete")
+	public ResponseEntity<String> deleteAllCustomers() {
+		System.out.println("Delete All Customers...");
+
+		repository.deleteAll();
+
+		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
+	}
+
+	@GetMapping(value = "customers/cname/{cname}")
+	public List<Customer> findByAge(@PathVariable String cname) {
+
+		List<Customer> customers = repository.findByCname(cname);
+		return customers;
+	}
+
+	@PutMapping("/customers/{cid}")
+	public ResponseEntity<Customer> updateCustomer(@PathVariable("cid") long cid, @RequestBody Customer customer) {
+		System.out.println("Update Customer with CID = " + cid + "...");
+
+		Optional<Customer> customerData = repository.findByCid(cid);
+
+		if (customerData.isPresent()) {
+			Customer _customer = customerData.get();
+			_customer.setCname(customer.getCname());
+			_customer.setAddress(customer.getAddress());
+			_customer.setPhone(customer.getPhone());
+			return new ResponseEntity<>(repository.save(_customer), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 }
