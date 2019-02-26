@@ -23,14 +23,18 @@ public class Customer {
  
 	@Column(name = "phone")
 	private String phone;
+	
+	@Column(name = "password")
+	private String password;
  
 	public Customer() {
 	}
  
-	public Customer(String cname,String address,String phone) {
+	public Customer(String cname,String address,String phone,String password) {
 		this.cname = cname;
 		this.address = address;
 		this.phone = phone;
+		this.password = password;
 	}
  
 	public long getCid() {
@@ -61,6 +65,14 @@ public class Customer {
 		this.phone = phone;
 	}
  
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + cid + ", name=" + cname + ", address=" + address + ", phone=" + phone + "]";

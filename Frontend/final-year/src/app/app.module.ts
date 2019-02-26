@@ -7,8 +7,10 @@ import { CreateCustomerComponent } from './create-customer/create-customer.compo
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { SearchCustomersComponent } from './search-customers/search-customers.component';
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
     CreateCustomerComponent,
     CustomerDetailsComponent,
     CustomersListComponent,
-    SearchCustomersComponent
+    SearchCustomersComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
+    routing,
     HttpClientModule
   ],
   providers: [],
