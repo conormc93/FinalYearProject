@@ -4,6 +4,7 @@ import { CustomersListComponent } from './customers-list/customers-list.componen
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { SearchCustomersComponent } from './search-customers/search-customers.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'customer', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: 'add', component: CreateCustomerComponent },
     { path: 'findbycname', component: SearchCustomersComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent },
     { path: '**', redirectTo: '' }
 ];
 

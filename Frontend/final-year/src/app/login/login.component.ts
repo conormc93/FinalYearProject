@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        const url = 'http://localhost:4200/login';
+        const url = 'http://localhost:8080/api/login';
         this.http.post<Observable<boolean>>(url, {
-            userName: this.model.username,
+            cname: this.model.username,
             password: this.model.password
         }).subscribe(isValid => {
             if (isValid) {
                 sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
-                this.router.navigate(['']);
+                this.router.navigate(['home']);
             } else {
                 alert('Authentication failed.');
             }

@@ -9,11 +9,11 @@ import { catchError, map, tap} from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
 
-    userName: string;
+    cname: string;
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
-        const url = 'http://localhost:4200';
+        const url = 'http://localhost:8080/api/user';
 
         const headers: HttpHeaders = new HttpHeaders({
             'Authorization': 'Basic ' + sessionStorage.getItem('token')
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         const options = { headers: headers };
         this.http.post<Observable<Object>>(url, {}, options).
             subscribe(principal => {
-                this.userName = principal['name'];
+                this.cname = principal['name'];
             },
             error => {
                 if (error.status === 401) {
