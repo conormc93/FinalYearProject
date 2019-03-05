@@ -1,6 +1,6 @@
-export class Customer {
-    cid: number;
-    cname: string;
+export class User {
+    uid: number;
+    name: string;
     address: string;
     phone: string;
     password: string;

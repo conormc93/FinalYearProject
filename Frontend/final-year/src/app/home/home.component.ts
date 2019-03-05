@@ -9,25 +9,25 @@ import { catchError, map, tap} from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
 
-    cname: string;
+    name: string;
+
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
         const url = 'http://localhost:8080/api/user';
 
-        const headers: HttpHeaders = new HttpHeaders({
+        let headers: HttpHeaders = new HttpHeaders({
             'Authorization': 'Basic ' + sessionStorage.getItem('token')
         });
 
-        const options = { headers: headers };
+        let options = { headers: headers };
         this.http.post<Observable<Object>>(url, {}, options).
             subscribe(principal => {
-                this.cname = principal['name'];
+                this.name = principal['name'];
             },
             error => {
-                if (error.status === 401) {
+                if(error.status == 401)
                     alert('Unauthorized');
-                }
             }
         );
     }
@@ -45,5 +45,5 @@ export class HomeComponent implements OnInit {
         }
         return throwError(
           'Something bad happened; please try again later.');
-      }
+      };
 }

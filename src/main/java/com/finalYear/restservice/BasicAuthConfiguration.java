@@ -18,7 +18,7 @@ public class BasicAuthConfiguration
       throws Exception {
         auth
           .inMemoryAuthentication()
-          .withUser("user")
+          .withUser("name")
           .password("password")
           .roles("USER");
     }
@@ -34,7 +34,7 @@ public class BasicAuthConfiguration
           .and()
           .cors()
           .and()
-          .exceptionHandling()
+          .httpBasic()
           .and()
           .csrf()
           .disable();

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomersListComponent } from './customers-list/customers-list.component';
-import { CreateCustomerComponent } from './create-customer/create-customer.component';
-import { SearchCustomersComponent } from './search-customers/search-customers.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { SearchUsersComponent } from './search-users/search-users.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'customer', pathMatch: 'full' },
-    { path: 'customer', component: CustomersListComponent },
-    { path: 'add', component: CreateCustomerComponent },
-    { path: 'findbycname', component: SearchCustomersComponent },
+    { path: '', redirectTo: 'user', pathMatch: 'full' },
+    { path: 'user', component: UsersListComponent },
+    { path: 'add', component: CreateUserComponent },
+    { path: 'findbycname', component: SearchUsersComponent },
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: '**', redirectTo: '' }
