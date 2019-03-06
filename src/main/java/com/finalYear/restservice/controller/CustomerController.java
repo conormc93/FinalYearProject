@@ -65,10 +65,10 @@ public class CustomerController{
 		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
 	}
 
-	@GetMapping(value = "customers/name/{name}")
+	@GetMapping(value = "customers/cname/{cname}")
 	public List<Customer> findByName(@PathVariable String name) {
 
-		List<Customer> customers = repository.findByName(name);
+		List<Customer> customers = repository.findByCname(name);
 		return customers;
 	}
 

@@ -11,6 +11,9 @@ import { routing } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { SearchCustomersComponent } from './search-customers/search-customers.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { HomeComponent } from './home/home.component';
     UsersListComponent,
     SearchUsersComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CustomerListComponent,
+    CustomerDetailsComponent,
+    SearchCustomersComponent
   ],
   imports: [
     BrowserModule,
