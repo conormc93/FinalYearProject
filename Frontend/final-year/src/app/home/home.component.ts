@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         const options = { headers: headers };
         this.http.post<Observable<Object>>(url, {}, options).
             subscribe(principal => {
-                this.cname = principal['name'];
+                this.cname = principal['cname'];
             },
             error => {
                 if (error.status === 401) {

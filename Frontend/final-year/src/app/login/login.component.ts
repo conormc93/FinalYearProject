@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['home']);
             } else {
                 alert('Authentication failed.');
+                this.router.navigate(['login']);
             }
         });
     }

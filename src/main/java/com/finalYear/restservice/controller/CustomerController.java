@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,17 +32,16 @@ public class CustomerController {
 	@Autowired
 	CustomerRepository repository;
 	
-	
 	@RequestMapping("/login")
     public boolean login(@RequestBody Customer user) {
         return
-          user.getCname().equals("user") && user.getPassword().equals("password");
+          user.getCname().equals("John") && user.getPassword().equals("test");
     }
 	
 	@RequestMapping("/user")
     public Principal user(HttpServletRequest request) {
-		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
-		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+        String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
+        return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
     }
 
 	@GetMapping("/customers")
