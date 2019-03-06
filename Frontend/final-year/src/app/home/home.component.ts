@@ -9,7 +9,8 @@ import { catchError, map, tap} from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
 
-    cname: string;
+    name: string;
+
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
         const options = { headers: headers };
         this.http.post<Observable<Object>>(url, {}, options).
             subscribe(principal => {
-                this.cname = principal['cname'];
+                this.name = principal['name'];
             },
             error => {
                 if (error.status === 401) {

@@ -8,15 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "user")
+public class User {
  
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long cid;
+	private long uid;
  
-	@Column(name = "cname")
-	private String cname;
+	@Column(name = "name")
+	private String name;
  
 	@Column(name = "address")
 	private String address;
@@ -27,26 +27,26 @@ public class Customer {
 	@Column(name = "password")
 	private String password;
  
-	public Customer() {
+	public User() {
 	}
  
-	public Customer(String cname,String address,String phone,String password) {
-		this.cname = cname;
+	public User(String name,String address,String phone,String password) {
+		this.name = name;
 		this.address = address;
 		this.phone = phone;
 		this.password = password;
 	}
  
-	public long getCid() {
-		return cid;
+	public long getUid() {
+		return uid;
 	}
  
-	public void setCname(String cname) {
-		this.cname = cname;
+	public void setName(String name) {
+		this.name = name;
 	}
  
-	public String getCname() {
-		return this.cname;
+	public String getName() {
+		return this.name;
 	}
  
 	public void setAddress(String address) {
@@ -75,6 +75,6 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + cid + ", name=" + cname + ", address=" + address + ", phone=" + phone + "]";
+		return "User [id=" + uid + ", name=" + name + ", address=" + address + ", phone=" + phone + " password=" + password + "]";
 	}
 }
