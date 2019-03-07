@@ -1,0 +1,23 @@
+<div *ngIf="product">
+  <div>
+      <label>Product ID: </label> {{product.pid}}
+    </div>
+  <div>
+    <label>Product name: </label> {{product.pname}}
+  </div>
+  <div>
+    <label>Stock: </label> {{product.stock}}
+  </div>
+  <div>
+    <label>Cost Price: </label> {{product.cost_price}}
+  </div>
+  <div>
+    <label>Sale Price: </label> {{product.sale_price}}
+  </div>
+  <div>
+    <label>User ID: </label> {{product.uid}}
+  </div>
+  <span class="button is-small btn-danger" (click)='deleteProduct()'>Delete</span>
+
+  <hr/>
+</div>

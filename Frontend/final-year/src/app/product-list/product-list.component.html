@@ -1,0 +1,12 @@
+<h1>Products</h1>
+
+<div *ngFor="let product of products | async" style="width: 300px;">
+  <product-details [product]='product'></product-details>
+</div>
+
+<p> <a routerLink="../addProduct" class="btn btn-primary active" role="button" routerLinkActive="active">Add Product</a></p>
+
+
+<div>
+  <button type="button" class="button btn-danger" (click)='deleteProducts()'>Delete All</button>
+</div>

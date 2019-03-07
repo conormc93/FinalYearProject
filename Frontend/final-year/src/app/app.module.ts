@@ -16,6 +16,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { SearchCustomersComponent } from './search-customers/search-customers.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     CustomerDetailsComponent,
     SearchCustomersComponent,
     ProductListComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

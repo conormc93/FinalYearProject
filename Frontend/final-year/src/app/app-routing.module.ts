@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateProductComponent } from './create-product/create-product.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { SearchUsersComponent } from './search-users/search-users.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'user', pathMatch: 'full' },
     { path: 'user', component: UsersListComponent },
     { path: 'add', component: CreateUserComponent },
+    { path: 'addProduct', component: CreateProductComponent },
     { path: 'findbycname', component: SearchUsersComponent },
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
