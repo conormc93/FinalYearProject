@@ -1,0 +1,19 @@
+<h3>Create Order</h3>
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cid">Customer ID</label>
+      <select>
+        <option ng-repeat="customer in customers | async">[{{customer.name}}</option>
+      </select>
+      <input type="text" class="form-control" id="cid" required [(ngModel)]="order.cid" name="cid">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newProduct()">Add</button>
+</div>
