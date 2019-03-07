@@ -2,7 +2,10 @@
   <h1>Hi {{name}}!</h1>
   <nav>
    <p> <a routerLink="../customer" class="btn btn-primary active" role="button" routerLinkActive="active">Customers</a></p>
-   <p> <a routerLink="../findbycname" class="btn btn-primary active" role="button" routerLinkActive="active">Search</a></p>
+   <p> <a routerLink="../order" class="btn btn-primary active" role="button" routerLinkActive="active">Orders</a></p>
+   <p> <a routerLink="../product" class="btn btn-primary active" role="button" routerLinkActive="active">Prodcuts</a></p>
+
+
   </nav>
   <p><a [routerLink]="['/login']" (click) ="logout()">Logout</a></p>
 </div>

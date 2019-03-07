@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { CreateProductComponent } from './create-product/create-product.component';
-import { CreateOrderComponent } from './create-order/create-order.component';
-import { UsersListComponent } from './users-list/users-list.component';
-import { SearchUsersComponent } from './search-users/search-users.component';
+import { CreateUserComponent } from './_user/create-user/create-user.component';
+import { CreateProductComponent } from './_product/create-product/create-product.component';
+import { CreateCustomerComponent } from './_customer/create-customer/create-customer.component';
+import { CreateOrderComponent } from './_order/create-order/create-order.component';
+import { UsersListComponent } from './_user/users-list/users-list.component';
+import { SearchUsersComponent } from './_user/search-users/search-users.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { CustomerListComponent } from './customer-list/customer-list.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { OrderListComponent } from './order-list/order-list.component';
-import { SearchCustomersComponent } from './search-customers/search-customers.component';
+import { CustomerListComponent } from './_customer/customer-list/customer-list.component';
+import { ProductListComponent } from './_product/product-list/product-list.component';
+import { OrderListComponent } from './_order/order-list/order-list.component';
+import { SearchCustomersComponent } from './_customer/search-customers/search-customers.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'user', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'user', component: UsersListComponent },
     { path: 'add', component: CreateUserComponent },
     { path: 'addProduct', component: CreateProductComponent },
+    { path: 'addCustomer', component: CreateCustomerComponent },
     { path: 'addOrder', component: CreateOrderComponent },
     { path: 'findbyname', component: SearchCustomersComponent },
     { path: 'findbycname', component: SearchUsersComponent },

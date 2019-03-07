@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from '../../_models/user';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'create-user',

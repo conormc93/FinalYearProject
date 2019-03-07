@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Order } from '../order';
-import { OrderService } from '../order.service';
+import { Order } from '../../_models/order';
+import { OrderService } from '../../_services/order.service';
 
-import { Customer } from '../customer';
-import { CustomerService } from '../customer.service';
+import { Customer } from '../../_models/customer';
+import { CustomerService } from '../../_services/customer.service';
 
 @Component({
   selector: 'create-order',

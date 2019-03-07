@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { UserService } from '../user.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
     selector: 'login',
