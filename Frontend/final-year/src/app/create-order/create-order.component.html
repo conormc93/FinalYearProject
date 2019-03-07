@@ -4,9 +4,8 @@
     <div class="form-group">
       <label for="cid">Customer ID</label>
       <select>
-        <option ng-repeat="customer in customers | async">[{{customer.cid}}</option>
       </select>
-      <input type="text" class="form-control" id="cid" required [(ngModel)]="order.cid" name="cid">
+     
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
