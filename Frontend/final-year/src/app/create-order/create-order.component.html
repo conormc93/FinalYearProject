@@ -2,8 +2,9 @@
 <div [hidden]="submitted" style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="cid">Customer ID</label>
+      <label for="cname">Customer</label>
       <select>
+        <option *ngFor="let customer of customers | async">{{customer.name}}</option>
       </select>
      
     </div>

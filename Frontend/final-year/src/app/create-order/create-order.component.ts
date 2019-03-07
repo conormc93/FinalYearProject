@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
 
+import { Customer } from '../customer';
+import { CustomerService } from '../customer.service';
+
 @Component({
   selector: 'create-order',
   templateUrl: './create-order.component.html',
@@ -13,11 +16,12 @@ export class CreateOrderComponent implements OnInit {
 
   order: Order = new Order();
   submitted = false;
+  customers: Observable<Customer[]>;
 
-
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.reloadData();
   }
 
   newProduct(): void {
@@ -34,5 +38,9 @@ export class CreateOrderComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.save();
+  }
+
+  reloadData() {
+    this.customers = this.customerService.getCustomersList();
   }
 }
