@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { User } from './user';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,5 +39,9 @@ export class UserService {
 
   deleteAll(): Observable<any> {
     return this.http.delete(`${this.baseUrl}` + `/delete`, { responseType: 'text' });
+  }
+
+  register(user: User) {
+    return this.http.post(`/users/register`, user);
   }
 }

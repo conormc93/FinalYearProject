@@ -1,3 +1,4 @@
+<h2>Login</h2>
 <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <label for="username">Username</label>
@@ -13,3 +14,20 @@
         <button [disabled]="loading">Login</button>
     </div>
 </form>
+
+<h2>Register</h2>
+<form name="registerForm" (ngSubmit)="r.form.valid && onSubmit()" #r="ngForm" novalidate>
+        <div [ngClass]="{ 'has-error': r.submitted && !rusername.valid }">
+            <label for="r.username">Username</label>
+            <input type="text" name="r.username" [(ngModel)]="model.rusername" #rusername="ngModel" required />
+            <div *ngIf="r.submitted && !rusername.valid">Username is required</div>
+        </div>
+        <div [ngClass]="{ 'has-error': r.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" name="r.password" [(ngModel)]="model.rpassword" #rpassword="ngModel" required />
+            <div *ngIf="r.submitted && !rpassword.valid">Password is required</div>
+        </div>
+        <div>
+            <button [disabled]="loading">Register</button>
+        </div>
+    </form>
