@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { SearchCustomersComponent } from './search-customers/search-customers.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { SearchCustomersComponent } from './search-customers/search-customers.co
     HomeComponent,
     CustomerListComponent,
     CustomerDetailsComponent,
-    SearchCustomersComponent
+    SearchCustomersComponent,
+    ProductListComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

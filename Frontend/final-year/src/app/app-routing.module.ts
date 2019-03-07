@@ -6,6 +6,7 @@ import { SearchUsersComponent } from './search-users/search-users.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { SearchCustomersComponent } from './search-customers/search-customers.component';
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'customer', component: CustomerListComponent },
+    { path: 'product', component: ProductListComponent },
     { path: 'findbyname', component: SearchCustomersComponent },
     { path: '**', redirectTo: '' }
 ];

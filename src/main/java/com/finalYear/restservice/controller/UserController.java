@@ -26,47 +26,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.finalYear.restservice.entity.User;
-import  com.finalYear.restservice.repository.UserRepository;
+import com.finalYear.restservice.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
-public class UserController{
+public class UserController {
 
 	@Autowired
 	UserRepository repository;
-    
-	
-	
+
 	@RequestMapping("/login")
-    public boolean login(@RequestBody User user) {
-	
-		
-		List<User> users;		
+	public boolean login(@RequestBody User user) {
+
+		List<User> users;
 		users = repository.findByName(user.getName());
-		
-		for(User myUser: users){
-			if(myUser.getPassword().equals(user.getPassword())){
+
+		for (User myUser : users) {
+			if (myUser.getPassword().equals(user.getPassword())) {
 				return true;
-			}else{
+			} else {
 				return false;
-			}	
-		} 
+			}
+		}
 		return false;
-		
-		
-		
-	//	return user.getName().equals("Mary") && user.getPassword().equals("test");
-		
+
+		// return user.getName().equals("Mary") && user.getPassword().equals("test");
+
 	}
-	
+
 	@RequestMapping("/user")
-    public Principal user(HttpServletRequest request) {
+	public Principal user(HttpServletRequest request) {
 		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
 		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
-    }
+	}
 
 	@GetMapping("/users")
 	public List<User> getAllUsers() {
@@ -81,7 +75,7 @@ public class UserController{
 	@PostMapping(value = "/users/create")
 	public User postUser(@RequestBody User user) {
 
-		user = repository.save(new User(user.getName(), user.getAddress(), user.getPhone(),user.getPassword()));
+		user = repository.save(new User(user.getName(), user.getAddress(), user.getPhone(), user.getPassword()));
 		return user;
 	}
 
