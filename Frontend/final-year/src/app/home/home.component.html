@@ -1,11 +1,11 @@
-<div class="col-md-6 col-md-offset-3">
-  <h1>Hi {{name}}!</h1>
-  <nav>
-   <p> <a routerLink="../customer" class="btn btn-primary active" role="button" routerLinkActive="active">Customers</a></p>
-   <p> <a routerLink="../order" class="btn btn-primary active" role="button" routerLinkActive="active">Orders</a></p>
-   <p> <a routerLink="../product" class="btn btn-primary active" role="button" routerLinkActive="active">Prodcuts</a></p>
+<div *ngIf="info.token; else loggedOut">
+  <p>
+    <strong> Welcome</strong> {{info.username}}<br/>
+  </p>
 
-
-  </nav>
-  <p><a [routerLink]="['/login']" (click) ="logout()">Logout</a></p>
+  <button class="btn btn-secondary" (click)="logout()">Logout</button>
 </div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

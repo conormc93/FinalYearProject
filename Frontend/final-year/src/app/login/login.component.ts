@@ -1,72 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
 
-import { UserService } from '../_services/user.service';
+import { AuthService } from '../auth/auth.service';
+import { TokenStorageService } from '../auth/token-storage.service';
+import { AuthLoginInfo } from '../auth/login-info';
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent implements OnInit {
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  private loginInfo: AuthLoginInfo;
 
-    model: any = {};
-    registerForm: any;
-    loading = false;
-    submitted = false;
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
-
-    constructor(
-        private route: ActivatedRoute,
-        private userService: UserService,
-        private router: Router,
-        private http: HttpClient
-    ) { }
-
-    ngOnInit() {
-        sessionStorage.setItem('token', '');
+  ngOnInit() {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getAuthorities();
     }
+  }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+  onSubmit() {
+    console.log(this.form);
 
-    login() {
-        const url = 'http://localhost:8080/api/login';
-        this.http.post<Observable<boolean>>(url, {
-            name: this.model.username,
-            password: this.model.password
-        }).subscribe(isValid => {
-            if (isValid) {
-                sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
-                this.router.navigate(['home']);
-            } else {
-                alert('Authentication failed.');
-                this.router.navigate(['login']);
-            }
-        });
-    }
+    this.loginInfo = new AuthLoginInfo(
+      this.form.username,
+      this.form.password);
 
-    onSubmit() {
-        this.submitted = true;
+    this.authService.attemptAuth(this.loginInfo).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUsername(data.username);
+        this.tokenStorage.saveAuthorities(data.authorities);
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        this.reloadPage();
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
 
-        this.loading = true;
-        console.log('SUBMITTING');
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.loading = false;
-                });
-    }
+  reloadPage() {
+    window.location.reload();
+  }
 }

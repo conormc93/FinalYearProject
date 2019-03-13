@@ -29,7 +29,7 @@ export class CustomerDetailsComponent implements OnInit {
         error => console.log(error));
   }
 
-  deleteCusomer() {
+  deleteCustomer() {
     this.customerService.deleteCustomer(this.customer.cid)
       .subscribe(
         data => {
