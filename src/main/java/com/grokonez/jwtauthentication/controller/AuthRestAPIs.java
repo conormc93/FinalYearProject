@@ -1,6 +1,8 @@
 package com.grokonez.jwtauthentication.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -15,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,7 @@ import com.grokonez.jwtauthentication.message.request.LoginForm;
 import com.grokonez.jwtauthentication.message.request.SignUpForm;
 import com.grokonez.jwtauthentication.message.response.JwtResponse;
 import com.grokonez.jwtauthentication.message.response.ResponseMessage;
+import com.grokonez.jwtauthentication.model.Customer;
 import com.grokonez.jwtauthentication.model.Role;
 import com.grokonez.jwtauthentication.model.RoleName;
 import com.grokonez.jwtauthentication.model.User;
@@ -110,4 +114,5 @@ public class AuthRestAPIs {
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
 	}
+
 }

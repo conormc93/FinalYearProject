@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,10 @@ export class CustomerService {
 
   getCustomersByName(name: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/name/${name}`);
+  }
+
+  getCustomersByUid(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${username}`);
   }
 
   deleteAll(): Observable<any> {

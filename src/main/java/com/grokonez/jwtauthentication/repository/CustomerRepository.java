@@ -12,5 +12,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long>{
 	List<Customer> findByCname(String cname);
 	Optional<Customer> findByCid(long cid);
 	Integer deleteByCid(long cid);
+	List<Customer> findByUid(long uid);
 
 }

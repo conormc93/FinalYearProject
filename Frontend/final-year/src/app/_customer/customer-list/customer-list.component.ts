@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 
 import { CustomerService } from '../../_services/customer.service';
 import { Customer } from '../../_models/customer';
+import { TokenStorageService } from '../../auth/token-storage.service';
+
 
 @Component({
   selector: 'app-customer-list',
@@ -14,7 +16,7 @@ export class CustomerListComponent implements OnInit {
 
   customers: Observable<Customer[]>;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -31,6 +33,6 @@ export class CustomerListComponent implements OnInit {
   }
 
   reloadData() {
-    this.customers = this.customerService.getCustomersList();
+    this.customers = this.customerService.getCustomersByUid(this.tokenStorageService.getUsername());
   }
 }

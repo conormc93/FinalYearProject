@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grokonez.jwtauthentication.model.Customer;
+import com.grokonez.jwtauthentication.model.User;
 import com.grokonez.jwtauthentication.repository.CustomerRepository;
+import com.grokonez.jwtauthentication.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,7 +31,9 @@ public class CustomerController{
 
 	@Autowired
 	CustomerRepository repository;
-    
+	
+	@Autowired
+    UserRepository userRepo;
 
 	@GetMapping("/customers")
 	public List<Customer> getAllUsers() {
@@ -40,6 +44,16 @@ public class CustomerController{
 
 		return customers;
 	}
+	
+	@GetMapping("/customers/{username}")
+	public List<Customer> getCustomers(@PathVariable("username")String username){
+			
+		List<Customer> customers = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
+
+		return customers;
+	}
+
 
 	@PostMapping(value = "/customers/create")
 	public Customer postCustomer(@RequestBody Customer customer) {
