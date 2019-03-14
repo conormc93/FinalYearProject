@@ -31,10 +31,11 @@ public class Customer {
 	public Customer() {
 	}
  
-	public Customer(String cname,String address,String phone) {
+	public Customer(String cname,String address,String phone,long uid) {
 		this.cname = cname;
 		this.address = address;
 		this.phone = phone;
+		this.uid = uid;
 	}
  
 	public long getCid() {

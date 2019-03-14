@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Customer } from '../../_models/customer';
 import { CustomerService } from '../../_services/customer.service';
+import { TokenStorageService } from '../../auth/token-storage.service';
+
 
 @Component({
   selector: 'create-customer',
@@ -13,7 +15,7 @@ export class CreateCustomerComponent implements OnInit {
   customer: Customer = new Customer();
   submitted = false;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
   }
@@ -24,7 +26,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   save() {
-    this.customerService.createCustomer(this.customer)
+    this.customerService.createCustomer(this.customer, this.tokenStorageService.getUsername())
       .subscribe(data => console.log(data), error => console.log(error));
     this.customer = new Customer();
   }

@@ -55,10 +55,10 @@ public class CustomerController{
 	}
 
 
-	@PostMapping(value = "/customers/create")
-	public Customer postCustomer(@RequestBody Customer customer) {
+	@PostMapping(value = "/customers/{username}/create")
+	public Customer postCustomer(@RequestBody Customer customer, @PathVariable("username")String username) {
 
-		customer = repository.save(new Customer(customer.getName(), customer.getAddress(), customer.getPhone()));
+		customer = repository.save(new Customer(customer.getName(), customer.getAddress(), customer.getPhone(), userRepo.findAllByUsername(username).getId()));
 		return customer;
 	}
 
