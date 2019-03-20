@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { ProductService } from '../../_services/product.service';
 import { Product } from '../../_models/product';
+import { TokenStorageService } from '../../auth/token-storage.service';
 
 @Component({
   selector: 'product-list',
@@ -13,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
   products: Observable<Product[]>;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -30,6 +31,6 @@ export class ProductListComponent implements OnInit {
   }
 
   reloadData() {
-    this.products = this.productService.getProductsList();
+    this.products = this.productService.getProductsByUid(this.tokenStorageService.getUsername());
   }
 }

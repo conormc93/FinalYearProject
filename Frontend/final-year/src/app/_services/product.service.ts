@@ -31,6 +31,10 @@ export class ProductService {
     return this.http.get(`${this.baseUrl}`);
   }
 
+  getProductsByUid(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${username}`);
+  }
+
   getProductsByName(name: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/name/${name}`);
   }

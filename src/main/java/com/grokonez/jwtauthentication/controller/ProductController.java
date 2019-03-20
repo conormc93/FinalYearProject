@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grokonez.jwtauthentication.model.Customer;
 import com.grokonez.jwtauthentication.model.Product;
 import com.grokonez.jwtauthentication.repository.ProductRepository;
+import com.grokonez.jwtauthentication.repository.UserRepository;
+
+import static java.lang.Math.toIntExact;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,6 +33,9 @@ public class ProductController {
 
 	@Autowired
 	ProductRepository repository;
+	
+	@Autowired
+    UserRepository userRepo;
 
 	@GetMapping("/products")
 	public List<Product> getAllProducts() {
@@ -36,6 +43,15 @@ public class ProductController {
 
 		List<Product> products = new ArrayList<>();
 		repository.findAll().forEach(products::add);
+
+		return products;
+	}
+	
+	@GetMapping("/products/{username}")
+	public List<Product> getProducts(@PathVariable("username")String username){
+			
+		List<Product> products = new ArrayList<>();
+		repository.findByUid(toIntExact(userRepo.findAllByUsername(username).getId())).forEach(products::add);
 
 		return products;
 	}

@@ -6,6 +6,11 @@
       <select>
         <option *ngFor="let customer of customers | async">{{customer.name}}</option>
       </select>
+
+      <label for="pname">Products</label>
+      <select>
+        <option *ngFor="let product of products | async">{{product.pname}}</option>
+      </select>
      
     </div>
 

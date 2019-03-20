@@ -6,6 +6,7 @@ import { OrderService } from '../../_services/order.service';
 
 import { Customer } from '../../_models/customer';
 import { CustomerService } from '../../_services/customer.service';
+import { TokenStorageService } from '../../auth/token-storage.service';
 
 @Component({
   selector: 'create-order',
@@ -18,7 +19,8 @@ export class CreateOrderComponent implements OnInit {
   submitted = false;
   customers: Observable<Customer[]>;
 
-  constructor(private orderService: OrderService, private customerService: CustomerService) { }
+  constructor(private orderService: OrderService, private customerService: CustomerService,
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -41,6 +43,6 @@ export class CreateOrderComponent implements OnInit {
   }
 
   reloadData() {
-    this.customers = this.customerService.getCustomersList();
+    this.customers = this.customerService.getCustomersByUid(this.tokenStorageService.getUsername());
   }
 }
