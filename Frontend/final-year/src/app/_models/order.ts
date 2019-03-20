@@ -1,8 +1,7 @@
 export class Order {
     oid: number;
-    cid:number;
-    products: Array<any>;
-    total_cost: number;
-    date: Date;
+    cid: number;
+    total: number;
     uid: number;
+    pid: number;
 }
