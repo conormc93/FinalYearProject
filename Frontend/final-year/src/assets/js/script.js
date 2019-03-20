@@ -9,7 +9,7 @@ var $cost = $('.cost');
 var $total = $('.total');
 
 $amount.on('input', function(event){
-  $total.html($amount.val()*$cost.val());
+  parseFloat($total.html($amount.val()*$cost.val())).toFixed(2);
 });
 
 });

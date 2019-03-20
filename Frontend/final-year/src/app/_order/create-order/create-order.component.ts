@@ -21,8 +21,8 @@ export class CreateOrderComponent implements OnInit {
   submitted = false;
   customers: Observable<Customer[]>;
   products: Observable<Product[]>;
-  selectedProduct: Object = {};
-
+  addedProduct: Object [] = [];
+  orderData = { pname: '', amount: '' };
 
   constructor(private orderService: OrderService,
               private customerService: CustomerService,
@@ -39,7 +39,7 @@ export class CreateOrderComponent implements OnInit {
   }
 
   save() {
-    this.orderService.createOrder(this.order)
+    this.orderService.createOrder(this.order, this.tokenStorageService.getUsername())
       .subscribe(data => console.log(data), error => console.log(error));
     this.order = new Order();
   }
@@ -47,6 +47,10 @@ export class CreateOrderComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.save();
+  }
+
+  addToOrder() {
+    this.addedProduct.push(this.orderData);
   }
 
   reloadData() {

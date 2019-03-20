@@ -1,7 +1,7 @@
 export class Order {
     oid: number;
-    cid: number;
+    cname: string;
     total: number;
     uid: number;
-    pid: number;
+    pname: string;
 }
