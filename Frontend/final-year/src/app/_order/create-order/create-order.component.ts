@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { Order } from '../../_models/order';
 import { OrderService } from '../../_services/order.service';
-
 import { Customer } from '../../_models/customer';
 import { CustomerService } from '../../_services/customer.service';
 import { TokenStorageService } from '../../auth/token-storage.service';
@@ -16,7 +15,6 @@ import { ProductService } from '../../_services/product.service';
   styleUrls: ['./create-order.component.css']
 })
 export class CreateOrderComponent implements OnInit {
-
   order: Order = new Order();
   submitted = false;
   customers: Observable<Customer[]>;
@@ -29,9 +27,7 @@ export class CreateOrderComponent implements OnInit {
               private tokenStorageService: TokenStorageService,
               private productService: ProductService) { }
 
-  ngOnInit() {
-    this.reloadData();
-  }
+  ngOnInit() { this.reloadData(); }
 
   newProduct(): void {
     this.submitted = false;
@@ -50,7 +46,10 @@ export class CreateOrderComponent implements OnInit {
   }
 
   addToOrder() {
+    console.log('Order Data: ' , this.orderData);
     this.addedProduct.push(this.orderData);
+    this.orderData = { pname: '', amount: '' };
+    console.log('Added Products: ' , this.addedProduct);
   }
 
   reloadData() {

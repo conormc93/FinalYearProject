@@ -14,7 +14,7 @@ export class OrderService {
   getOrder(oid: number): Observable<Object> {
     return this.http.get(`${this.baseUrl}/${oid}`);
   }
-  
+
   createOrder(order: Object, username: string): Observable<Object> {
     return this.http.post(`${this.baseUrl}/${username}` + `/create`, order);
   }
