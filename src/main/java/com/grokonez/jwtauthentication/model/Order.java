@@ -15,24 +15,35 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long oid;
 
-	@Column(name = "cid")
-	private int cid;
-
-	@Column(name = "total")
-	private float total;
+	@Column(name = "cname")
+	private String cname;
 	
 	@Column(name = "uid")
-	private int uid;
+	private long uid;
+	
+	@Column(name = "amount")
+	private int amount;
+
+	@Column(name = "pname")
+	private String pname;
+	
+	@Column(name = "total")
+	private float total;
 	
 
 	public Order() { }
 
-	public Order(long oid, int cid, float total, int uid) {
+
+	public Order(long oid, long uid, String cname, int amount, String pname,float total) {
+		super();
 		this.oid = oid;
-		this.cid = cid;
+		this.cname = cname;
+		this.uid = uid;
+		this.amount = amount;
+		this.pname = pname;
 		this.total = total;
-		
 	}
+
 
 	public long getOid() {
 		return oid;
@@ -42,12 +53,37 @@ public class Order {
 		this.oid = oid;
 	}
 
-	public int getCid() {
-		return cid;
+	public String getCname() {
+		return cname;
 	}
 
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+
+	public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 
 	public float getTotal() {
@@ -56,19 +92,6 @@ public class Order {
 
 	public void setTotal(float total) {
 		this.total = total;
-	}
-
-	public int getUid() {
-		return uid;
-	}
-
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
-	@Override
-	public String toString() {
-		return "Order [oid=" + oid + ", cid=" + cid + ", total=" + total + ", uid=" + uid + "]";
 	}
 	
 }

@@ -3,5 +3,5 @@ export class Order {
     cname: string;
     total: number;
     uid: number;
-    pname: string;
+    products: Object[];
 }

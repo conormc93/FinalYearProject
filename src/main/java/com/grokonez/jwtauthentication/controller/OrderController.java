@@ -18,8 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grokonez.jwtauthentication.model.Customer;
 import com.grokonez.jwtauthentication.model.Order;
+import com.grokonez.jwtauthentication.model.Product;
 import com.grokonez.jwtauthentication.repository.OrderRepository;
+import com.grokonez.jwtauthentication.repository.ProductRepository;
+import com.grokonez.jwtauthentication.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -28,6 +32,12 @@ public class OrderController {
 
 	@Autowired
 	OrderRepository repository;
+	
+	@Autowired
+    UserRepository userRepo;
+	
+	@Autowired
+    ProductRepository productRepo;
 
 	@GetMapping("/orders")
 	public List<Order> getAllProducts() {
@@ -39,11 +49,18 @@ public class OrderController {
 		return orders;
 	}
 
-	@PostMapping(value = "/orders/create")
-	public Order postOrder(@RequestBody Order order) {
-
-		order = repository.save(new Order(order.getOid(), order.getCid(), order.getTotal(),
-				order.getUid()));
+	@PostMapping(value = "/orders/{username}/create")
+	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) {
+		float total = 0;
+		List<Product> products = new ArrayList<>();
+		products = productRepo.findByPname(order.getPname());
+		
+		for(Product p: products) {
+			total = (p.getSale_price() * order.getAmount());
+		}
+		
+		order = repository.save(new Order(order.getOid(), userRepo.findAllByUsername(username).getId(), order.getCname(),
+				order.getAmount(), order.getPname(), total));
 		return order;
 	}
 
