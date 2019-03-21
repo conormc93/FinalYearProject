@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.controller;
+package com.inventory.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.Product;
-import com.grokonez.jwtauthentication.repository.ProductRepository;
-import com.grokonez.jwtauthentication.repository.UserRepository;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.Product;
+import com.inventory.app.repository.ProductRepository;
+import com.inventory.app.repository.UserRepository;
 
 import static java.lang.Math.toIntExact;
 
@@ -51,18 +51,19 @@ public class ProductController {
 	public List<Product> getProducts(@PathVariable("username")String username){
 			
 		List<Product> products = new ArrayList<>();
-		repository.findByUid(toIntExact(userRepo.findAllByUsername(username).getId())).forEach(products::add);
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(products::add);
 
 		return products;
 	}
 
-	@PostMapping(value = "/products/create")
-	public Product postProduct(@RequestBody Product product) {
+	@PostMapping(value = "/products/{username}/create")
+	public Product postProduct(@RequestBody Product product, @PathVariable("username")String username) {
 
 		product = repository.save(new Product(product.getPid(), product.getPname(), product.getStock(),
-				product.getCost_price(), product.getSale_price(), product.getUid()));
+				product.getCost_price(), product.getSale_price(), userRepo.findAllByUsername(username).getId()));
 		return product;
 	}
+	
 
 	@Transactional
 	@DeleteMapping("/products/{pid}")

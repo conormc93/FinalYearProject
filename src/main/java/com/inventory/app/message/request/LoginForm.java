@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.message.request;
+package com.inventory.app.message.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

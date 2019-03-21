@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.security.jwt;
+package com.inventory.app.security.jwt;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.grokonez.jwtauthentication.security.services.UserPrinciple;
+import com.inventory.app.security.services.UserPrinciple;
 
 import java.util.Date;
 
@@ -16,10 +16,10 @@ public class JwtProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
-    @Value("${grokonez.app.jwtSecret}")
+    @Value("${inventory.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${grokonez.app.jwtExpiration}")
+    @Value("${inventory.app.jwtExpiration}")
     private int jwtExpiration;
 
     public String generateJwtToken(Authentication authentication) {

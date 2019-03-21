@@ -1,13 +1,14 @@
-package com.grokonez.jwtauthentication.security.services;
+package com.inventory.app.security.services;
 
-import com.grokonez.jwtauthentication.model.User;
-import com.grokonez.jwtauthentication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.inventory.app.model.User;
+import com.inventory.app.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

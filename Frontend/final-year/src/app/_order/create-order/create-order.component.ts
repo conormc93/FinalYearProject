@@ -22,6 +22,7 @@ export class CreateOrderComponent implements OnInit {
   addedProduct: Object [] = [];
   orderData = { pname: '', amount: '', oid: '' };
   customer: Customer;
+  a = false;
 
   constructor(private orderService: OrderService,
               private customerService: CustomerService,
@@ -37,7 +38,14 @@ export class CreateOrderComponent implements OnInit {
 
   save() {
     this.orderService.createOrder(this.order, this.tokenStorageService.getUsername())
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data);
+        this.a = false;
+      },
+      a => {
+        this.submitted = false;
+        this.a = true;
+      }),
     this.order = new Order();
   }
 

@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.message.response;
+package com.inventory.app.message.response;
 
 public class ResponseMessage {
 	private String message;

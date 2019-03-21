@@ -1,12 +1,12 @@
-package com.grokonez.jwtauthentication.repository;
+package com.inventory.app.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.Product;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
 	List <Product> findByPname(String pname);
@@ -15,5 +15,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
 	Integer deleteByPid(long uid);
 	
-	List<Product> findByUid(int uid);
+	List<Product> findByUid(long uid);
 }

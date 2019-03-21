@@ -1,11 +1,11 @@
-package com.grokonez.jwtauthentication.repository;
+package com.inventory.app.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.Order;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.Order;
 
 
 public interface OrderRepository extends CrudRepository<Order, Long>{

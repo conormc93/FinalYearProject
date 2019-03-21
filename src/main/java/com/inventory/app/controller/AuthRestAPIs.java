@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.controller;
+package com.inventory.app.controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,17 +23,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grokonez.jwtauthentication.message.request.LoginForm;
-import com.grokonez.jwtauthentication.message.request.SignUpForm;
-import com.grokonez.jwtauthentication.message.response.JwtResponse;
-import com.grokonez.jwtauthentication.message.response.ResponseMessage;
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.Role;
-import com.grokonez.jwtauthentication.model.RoleName;
-import com.grokonez.jwtauthentication.model.User;
-import com.grokonez.jwtauthentication.repository.RoleRepository;
-import com.grokonez.jwtauthentication.repository.UserRepository;
-import com.grokonez.jwtauthentication.security.jwt.JwtProvider;
+import com.inventory.app.message.request.LoginForm;
+import com.inventory.app.message.request.SignUpForm;
+import com.inventory.app.message.response.JwtResponse;
+import com.inventory.app.message.response.ResponseMessage;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.Role;
+import com.inventory.app.model.RoleName;
+import com.inventory.app.model.User;
+import com.inventory.app.repository.RoleRepository;
+import com.inventory.app.repository.UserRepository;
+import com.inventory.app.security.jwt.JwtProvider;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

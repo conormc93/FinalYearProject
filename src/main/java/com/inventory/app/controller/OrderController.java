@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.controller;
+package com.inventory.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.Order;
-import com.grokonez.jwtauthentication.model.Product;
-import com.grokonez.jwtauthentication.repository.OrderRepository;
-import com.grokonez.jwtauthentication.repository.ProductRepository;
-import com.grokonez.jwtauthentication.repository.UserRepository;
+import com.inventory.app.message.response.ResponseMessage;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.Order;
+import com.inventory.app.model.Product;
+import com.inventory.app.repository.OrderRepository;
+import com.inventory.app.repository.ProductRepository;
+import com.inventory.app.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -59,13 +60,21 @@ public class OrderController {
 	}
 
 	@PostMapping(value = "/orders/{username}/create")
-	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) {
+	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) throws Exception {
+		
 		float total = 0;
 		List<Product> products = new ArrayList<>();
 		products = productRepo.findByPname(order.getPname());
 		
+		//Update Stock
 		for(Product p: products) {
+			if(order.getAmount() > p.getStock()) {
+				
+				throw new Exception();
+			}
+			
 			total = (p.getSale_price() * order.getAmount());
+			p.setStock(p.getStock()-order.getAmount());
 		}
 		
 		order = repository.save(new Order(order.getOid(), userRepo.findAllByUsername(username).getId(), order.getCname(),

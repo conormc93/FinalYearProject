@@ -1,7 +1,8 @@
-package com.grokonez.jwtauthentication.security.services;
+package com.inventory.app.security.services;
 
-import com.grokonez.jwtauthentication.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.inventory.app.model.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

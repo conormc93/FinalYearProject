@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.security.jwt;
+package com.inventory.app.security.jwt;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.grokonez.jwtauthentication.security.services.UserDetailsServiceImpl;
+import com.inventory.app.security.services.UserDetailsServiceImpl;
 
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
 

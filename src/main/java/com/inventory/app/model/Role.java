@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.model;
+package com.inventory.app.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

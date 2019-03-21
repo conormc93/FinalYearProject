@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.controller;
+package com.inventory.app.controller;
 
 
 import java.util.ArrayList;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grokonez.jwtauthentication.model.Customer;
-import com.grokonez.jwtauthentication.model.User;
-import com.grokonez.jwtauthentication.repository.CustomerRepository;
-import com.grokonez.jwtauthentication.repository.UserRepository;
+import com.inventory.app.model.Customer;
+import com.inventory.app.model.User;
+import com.inventory.app.repository.CustomerRepository;
+import com.inventory.app.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

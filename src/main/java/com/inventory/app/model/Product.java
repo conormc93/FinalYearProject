@@ -1,4 +1,4 @@
-package com.grokonez.jwtauthentication.model;
+package com.inventory.app.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,11 +28,11 @@ public class Product {
 	private float sale_price;
 
 	@Column(name = "uid")
-	private int uid;
+	private long uid;
 
 	public Product() { }
 
-	public Product(long pid, String pname, int stock, float cost_price, float sale_price, int uid) {
+	public Product(long pid, String pname, int stock, float cost_price, float sale_price, long uid) {
 		this.pid = pid;
 		this.pname = pname;
 		this.stock = stock;
@@ -81,11 +81,11 @@ public class Product {
 		this.sale_price = sale_price;
 	}
 
-	public int getUid() {
+	public long getUid() {
 		return uid;
 	}
 
-	public void setUid(int uid) {
+	public void setUid(long uid) {
 		this.uid = uid;
 	}
 
