@@ -19,7 +19,7 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit() { }
 
 
-  deleteCustomer() {
+  deleteOrder() {
     this.orderService.deleteOrder(this.order.oid)
       .subscribe(
         data => {

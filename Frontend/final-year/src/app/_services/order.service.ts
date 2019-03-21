@@ -34,7 +34,6 @@ export class OrderService {
   getOrderssByID(oid: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/oid/${oid}`);
   }
-
   
   getOrdersByUid(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${username}`);

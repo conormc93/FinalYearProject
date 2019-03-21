@@ -10,6 +10,6 @@ import com.inventory.app.model.Order;
 
 public interface OrderRepository extends CrudRepository<Order, Long>{
 	List<Order> findByOid(long oid);
-	Void deleteByOid(long oid);
+	Integer deleteByOid(long oid);
 	List<Order> findByUid(long uid);
 }
