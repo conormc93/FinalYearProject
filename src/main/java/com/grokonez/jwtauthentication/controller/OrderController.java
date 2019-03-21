@@ -48,6 +48,15 @@ public class OrderController {
 
 		return orders;
 	}
+	
+	@GetMapping("/orders/{username}")
+	public List<Order> getOrders(@PathVariable("username")String username){
+			
+		List<Order> orders = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
+
+		return orders;
+	}
 
 	@PostMapping(value = "/orders/{username}/create")
 	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) {

@@ -6,8 +6,8 @@
     <div class="form-group">
       <label for="cname">Customer</label>
         <br/>
-        <select name="cname" [(ngModel)]="order.cname" required>
-          <option *ngFor="let customer of customers | async">{{customer.name}}</option>
+        <select name="customer" [(ngModel)]="order.cname" required>
+          <option *ngFor="let customer of customers | async" [ngValue]="customer.name" > {{customer.name}} </option>
         </select>
     </div>
     
