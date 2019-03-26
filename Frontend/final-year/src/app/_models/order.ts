@@ -5,4 +5,5 @@ export class Order {
     pname: string;
     amount: number;
     total: number;
+    profit: number;
 }

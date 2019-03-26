@@ -30,11 +30,13 @@ public class Order {
 	@Column(name = "total")
 	private float total;
 	
-
+	@Column(name = "profit")
+	private float profit;
+	
 	public Order() { }
 
 
-	public Order(long oid, long uid, String cname, int amount, String pname,float total) {
+	public Order(long oid, long uid, String cname, int amount, String pname,float total,float profit) {
 		super();
 		this.oid = oid;
 		this.cname = cname;
@@ -42,6 +44,7 @@ public class Order {
 		this.amount = amount;
 		this.pname = pname;
 		this.total = total;
+		this.profit = profit;
 	}
 
 
@@ -92,6 +95,14 @@ public class Order {
 
 	public void setTotal(float total) {
 		this.total = total;
+	}
+	
+	public float getProfit() {
+		return profit;
+	}
+
+	public void setProfit(float profit) {
+		this.profit = profit;
 	}
 	
 }

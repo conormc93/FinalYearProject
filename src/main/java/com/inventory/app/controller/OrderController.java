@@ -63,6 +63,7 @@ public class OrderController {
 	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) throws Exception {
 		
 		float total = 0;
+		float profit = 0;
 		List<Product> products = new ArrayList<>();
 		products = productRepo.findByPname(order.getPname());
 		
@@ -77,8 +78,15 @@ public class OrderController {
 			p.setStock(p.getStock()-order.getAmount());
 		}
 		
+		//Get Profit
+		for(Product p: products) {
+			float sale = (order.getAmount() * p.getSale_price());
+			float cost = (order.getAmount() * p.getCost_price());
+			profit = sale - cost;
+		}
+		
 		order = repository.save(new Order(order.getOid(), userRepo.findAllByUsername(username).getId(), order.getCname(),
-				order.getAmount(), order.getPname(), total));
+				order.getAmount(), order.getPname(), total, profit));
 		return order;
 	}
 
