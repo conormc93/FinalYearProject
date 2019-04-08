@@ -58,6 +58,20 @@ public class OrderController {
 
 		return orders;
 	}
+	
+	@GetMapping("/orders/recent/{username}")
+	public List<Order> getRecentOrders(@PathVariable("username")String username){
+			
+		List<Order> orders = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
+
+		int a= orders.size();
+		
+		if(a > 5) {
+			return orders.subList(0, 4);
+		}
+		return orders;
+	}
 
 	@PostMapping(value = "/orders/{username}/create")
 	public Order postOrder(@RequestBody Order order, @PathVariable("username")String username) throws Exception {
