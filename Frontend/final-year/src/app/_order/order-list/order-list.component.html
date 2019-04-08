@@ -1,8 +1,9 @@
 <h1>Orders</h1>
 
-<div *ngFor="let order of orders | async" style="width: 300px;">
+<div *ngFor="let order of orders | async">
   <order-details [order]='order'></order-details>
 </div>
+
 
 <p> <a routerLink="../addOrder" class="btn btn-primary active" role="button" routerLinkActive="active">Add Order</a></p>
 

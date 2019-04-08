@@ -4,19 +4,47 @@
     </p>
 </div>
 
- <div id="h">
- <p> Your Recent Orders </p>
-  <div id="home" *ngFor="let order of orders | async" style="width: 300px;">
-        <div *ngIf="order">
-         <div>
-            <label>Order ID: </label> {{order.oid}}
-            <label>Customer's Name: </label> {{order.cname}}
-            <label>Amount: </label> {{order.amount}}
-          </div>
-          <hr>
-        </div>
+ <div id="Recent" >
+ <p>  <strong> Your Recent Orders</strong> </p>
+  <div *ngFor="let order of orders | async" >
+    <div *ngIf="order" >
+        <table >
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+        </tr>
+        <tr>
+          <td>{{order.oid}}</td>
+          <td>{{order.cname}}</td>
+          <td>{{order.pname}}</td>
+        </tr>
+        </table>
+      </div>
     </div>
 </div>
+
+<div id="TopCust" >
+ <p>  <strong> Your Top Customers</strong> </p>
+  <div *ngFor="let customer of customers | async" >
+    <div *ngIf="customer" >
+        <table >
+        <tr>
+          <th>Customer</th>
+          <th>Total Spending</th>
+        </tr>
+        <tr>
+          <td>{{customer.name}}</td>
+          <td>{{customer.amountPurchased}}</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+<br>
+
   <button class="btn btn-secondary" (click)="logout()">Logout</button>
 <ng-template #loggedOut>
   Please login.

@@ -2,6 +2,7 @@ package com.inventory.app.controller;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,15 @@ public class CustomerController{
 		return customers;
 	}
 
+	@GetMapping("/customers/top/{username}")
+	public List<Customer> getTopCustomers(@PathVariable("username")String username){
+			
+		List<Customer> customers = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
+
+		 Collections.sort(customers, Customer.apComparator);
+		return customers;
+	}
 
 	@PostMapping(value = "/customers/{username}/create")
 	public Customer postCustomer(@RequestBody Customer customer, @PathVariable("username")String username) {

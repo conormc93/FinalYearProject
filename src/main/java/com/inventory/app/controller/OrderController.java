@@ -22,6 +22,7 @@ import com.inventory.app.message.response.ResponseMessage;
 import com.inventory.app.model.Customer;
 import com.inventory.app.model.Order;
 import com.inventory.app.model.Product;
+import com.inventory.app.repository.CustomerRepository;
 import com.inventory.app.repository.OrderRepository;
 import com.inventory.app.repository.ProductRepository;
 import com.inventory.app.repository.UserRepository;
@@ -33,6 +34,9 @@ public class OrderController {
 
 	@Autowired
 	OrderRepository repository;
+	
+	@Autowired
+	CustomerRepository CustRepository;
 	
 	@Autowired
     UserRepository userRepo;
@@ -65,12 +69,31 @@ public class OrderController {
 		List<Order> orders = new ArrayList<>();
 		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
 
-		int a= orders.size();
+		int a = orders.size();
 		
 		if(a > 5) {
 			return orders.subList(0, 4);
 		}
 		return orders;
+	}
+	
+	@GetMapping("/orders/top/{username}")
+	public List<Customer> getTopCustomers(@PathVariable("username")String username){
+			
+		List<Customer> customers = new ArrayList<>();
+		List<Order> orders = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
+
+		for(Order o: orders){
+			
+		}
+
+		int a= customers.size();
+		
+		if(a > 5) {
+			return customers.subList(0, 4);
+		}
+		return customers;
 	}
 
 	@PostMapping(value = "/orders/{username}/create")
@@ -101,6 +124,12 @@ public class OrderController {
 		
 		order = repository.save(new Order(order.getOid(), userRepo.findAllByUsername(username).getId(), order.getCname(),
 				order.getAmount(), order.getPname(), total, profit));
+		
+		List<Customer> customers = new ArrayList<>();
+		customers = CustRepository.findByCname(order.getCname());
+		for(Customer c: customers) {
+			c.setAmountPurchased((c.getAmountPurchased() + order.getTotal()));
+		}
 		return order;
 	}
 

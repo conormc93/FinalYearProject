@@ -40,6 +40,10 @@ export class CustomerService {
     return this.http.get(`${this.baseUrl}/${username}`);
   }
 
+  getTopCustomers(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/top/${username}`);
+  }
+
   deleteAll(): Observable<any> {
     return this.http.delete(`${this.baseUrl}` + `/delete`, { responseType: 'text' });
   }

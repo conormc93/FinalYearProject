@@ -3,6 +3,8 @@ package com.inventory.app.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import java.util.Comparator;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +28,10 @@ public class Customer {
 	
 	@Column(name = "uid")
 	private long uid;
+	
+	@Column(name = "amountPurchased")
+	private float amountPurchased;
+	
 	
  
 	public Customer() {
@@ -73,6 +79,23 @@ public class Customer {
 	public void setUid(long uid) {
 		this.uid = uid;
 	}
+	
+	public float getAmountPurchased() {
+		return amountPurchased;
+	}
+
+	public void setAmountPurchased(float amountPurchased) {
+		this.amountPurchased = amountPurchased;
+	}
+
+
+	public static Comparator<Customer> apComparator = new Comparator<Customer>() {         
+	    @Override         
+	    public int compare(Customer x, Customer y) {             
+	      return (y.getAmountPurchased() < x.getAmountPurchased() ? -1 :                     
+	              (y.getAmountPurchased() == x.getAmountPurchased() ? 0 : 1));           
+	    }     
+	  };      
 
 	@Override
 	public String toString() {

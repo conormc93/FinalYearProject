@@ -4,4 +4,5 @@ export class Customer {
     address: string;
     phone: string;
     uid: number;
+    amountPurchased: number;
 }
