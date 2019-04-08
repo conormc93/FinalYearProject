@@ -39,6 +39,10 @@ export class OrderService {
     return this.http.get(`${this.baseUrl}/${username}`);
   }
 
+  getRecentOrders(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/recent/${username}`);
+  }
+
   deleteAll(): Observable<any> {
     return this.http.delete(`${this.baseUrl}` + `/delete`, { responseType: 'text' });
   }

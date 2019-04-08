@@ -8,15 +8,6 @@
       <li *ngIf="authority === 'user'" class="nav-item"><a class="nav-link" routerLink="customer">Customers</a></li>
       <li *ngIf="authority === 'user'" class="nav-item"><a class="nav-link" routerLink="product">Products</a></li>
       <li *ngIf="authority === 'user'" class="nav-item"><a class="nav-link" routerLink="order">Orders</a></li>
-      <li *ngIf="authority === 'user'" class="nav-item">
-        <a class="nav-link" routerLink="user">User Board</a>
-      </li>
-      <li *ngIf="authority === 'admin'" class="nav-item">
-        <a class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li *ngIf="authority === 'pm'" class="nav-item">
-        <a class="nav-link" routerLink="pm">PM Board</a>
-      </li>
       <li *ngIf="!authority" class="nav-item">
         <a class="nav-link" routerLink="auth/login">Login</a>
       </li>
