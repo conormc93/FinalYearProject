@@ -44,7 +44,7 @@ export class CustomerService {
     return this.http.get(`${this.baseUrl}/top/${username}`);
   }
 
-   getChartData(username: string): Observable<any> {
+   getChartData(username: string): any {
     return this.http.get(`${this.baseUrl}/data/${username}`);
   }
 

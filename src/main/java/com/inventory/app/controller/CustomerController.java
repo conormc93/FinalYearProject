@@ -1,9 +1,9 @@
 package com.inventory.app.controller;
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.inventory.app.model.Customer;
-import com.inventory.app.model.Product;
-import com.inventory.app.model.User;
 import com.inventory.app.repository.CustomerRepository;
 import com.inventory.app.repository.UserRepository;
 
@@ -38,6 +37,8 @@ public class CustomerController{
 	
 	@Autowired
     UserRepository userRepo;
+	
+	
 
 	@GetMapping("/customers")
 	public List<Customer> getAllUsers() {
@@ -58,6 +59,27 @@ public class CustomerController{
 		return customers;
 	}
 
+	@GetMapping("/customers/data/{username}")
+	public Object[] getData(@PathVariable("username")String username){
+		List<Customer> customers = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
+		Object[] a = new Object[customers.size()];
+		
+		for(Customer c: customers) {
+			
+			String as = ("'customer': " + c.getName() + ", 'amount': " + c.getAmount_purchased() + "");
+			appendValue(a, as);
+		  }	
+		return a;
+	}
+
+	private Object[] appendValue(Object[] obj, Object newObj) {
+
+	ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList(obj));
+	temp.add(newObj);
+	return temp.toArray();
+
+  }
 	@GetMapping("/customers/top/{username}")
 	public List<Customer> getTopCustomers(@PathVariable("username")String username){
 			
@@ -66,22 +88,6 @@ public class CustomerController{
 
 		 Collections.sort(customers, Customer.apComparator);
 		return customers;
-	}
-	
-	@GetMapping("/customers/data/{username}")
-	public String[][] getChartData(@PathVariable("username")String username){
-			
-		List<Customer> customers = new ArrayList<>();
-		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
-		String[][] myArray = new String[customers.size()][customers.size()];
-		
-		for(Customer c: customers) {
-			for(int i = 0; i < customers.size(); ){	
-				myArray[i][0] = c.getName();
-				myArray[i][1] = String.valueOf(c.getAmount_purchased());
-			}
-		}
-		return myArray;
 	}
 
 	@PostMapping(value = "/customers/{username}/create")

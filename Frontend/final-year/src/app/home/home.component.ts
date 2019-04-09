@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   orders: Observable<Order[]>;
   customers: Observable<Customer[]>;
   private chart: am4charts.PieChart;
+ 
 
   constructor(private token: TokenStorageService,private zone: NgZone, private customerService: CustomerService, private orderService: OrderService) { }
 
@@ -37,17 +38,23 @@ export class HomeComponent implements OnInit {
     this.reloadData();
   }
 
+
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("chartdiv", am4charts.PieChart);
       chart.paddingRight = 20;
       let data = [];
+     
+      // Add data
       
-      chart.data = [{
-        "customer": "a",
-        "amount": 4
-      }];
-    
+     this.customers.subscribe(customer=>{
+        customer.forEach(customer => {
+          chart.data.push({
+          "customer": customer.cid,
+          "amount": customer.amount_purchased
+          });
+        });
+    })
       // Add and configure Series
       let pieSeries = chart.series.push(new am4charts.PieSeries());
       pieSeries.dataFields.value = "amount";

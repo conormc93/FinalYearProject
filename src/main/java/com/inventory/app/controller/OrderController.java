@@ -1,5 +1,7 @@
 package com.inventory.app.controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.google.gson.Gson;
 import com.inventory.app.model.Customer;
 import com.inventory.app.model.Order;
 import com.inventory.app.model.Product;
@@ -43,6 +45,9 @@ public class OrderController {
 	
 	@Autowired
     ProductRepository productRepo;
+	
+	Gson gson = new Gson();
+	File file = new File("piechart.json");
 
 	@GetMapping("/orders")
 	public List<Order> getAllProducts() {
@@ -128,8 +133,15 @@ public class OrderController {
 		CustRepository.findByCname(order.getCname()).forEach(customers::add);
 		
 		for(Customer c: customers) {
+			
 			c.setAmount_purchased(c.getAmount_purchased() + order.getTotal());
 			CustRepository.save(c);
+		}
+		
+		List<Customer> xs = new ArrayList<>();
+		CustRepository.findAll().forEach(xs::add);
+		for(Customer x: xs) {
+			gson.toJson(x.getName(), new FileWriter(file));	
 		}
 		
 		return order;

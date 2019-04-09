@@ -43,6 +43,12 @@ public class Customer {
 		this.phone = phone;
 		this.uid = uid;
 	}
+	
+	public Customer(String cname,float amount_purchased) {
+		this.cname = cname;
+		this.amount_purchased = amount_purchased;
+	}
+ 
  
 	public long getCid() {
 		return cid;
