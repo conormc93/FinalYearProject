@@ -1,6 +1,8 @@
 package com.inventory.app.controller;
 
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.app.model.Customer;
+import com.inventory.app.model.Product;
 import com.inventory.app.model.User;
 import com.inventory.app.repository.CustomerRepository;
 import com.inventory.app.repository.UserRepository;
@@ -63,6 +66,22 @@ public class CustomerController{
 
 		 Collections.sort(customers, Customer.apComparator);
 		return customers;
+	}
+	
+	@GetMapping("/customers/data/{username}")
+	public String[][] getChartData(@PathVariable("username")String username){
+			
+		List<Customer> customers = new ArrayList<>();
+		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
+		String[][] myArray = new String[customers.size()][customers.size()];
+		
+		for(Customer c: customers) {
+			for(int i = 0; i < customers.size(); ){	
+				myArray[i][0] = c.getName();
+				myArray[i][1] = String.valueOf(c.getAmount_purchased());
+			}
+		}
+		return myArray;
 	}
 
 	@PostMapping(value = "/customers/{username}/create")

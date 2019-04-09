@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inventory.app.message.response.ResponseMessage;
+
 import com.inventory.app.model.Customer;
 import com.inventory.app.model.Order;
 import com.inventory.app.model.Product;
@@ -91,7 +91,7 @@ public class OrderController {
 		int a= customers.size();
 		
 		if(a > 5) {
-			return customers.subList(0, 4);
+			return customers.subList((customers.size() - 4), customers.size());
 		}
 		return customers;
 	}
@@ -110,7 +110,6 @@ public class OrderController {
 				
 				throw new Exception();
 			}
-			
 			total = (p.getSale_price() * order.getAmount());
 			p.setStock(p.getStock()-order.getAmount());
 		}
@@ -126,10 +125,13 @@ public class OrderController {
 				order.getAmount(), order.getPname(), total, profit));
 		
 		List<Customer> customers = new ArrayList<>();
-		customers = CustRepository.findByCname(order.getCname());
+		CustRepository.findByCname(order.getCname()).forEach(customers::add);
+		
 		for(Customer c: customers) {
-			c.setAmountPurchased((c.getAmountPurchased() + order.getTotal()));
+			c.setAmount_purchased(c.getAmount_purchased() + order.getTotal());
+			CustRepository.save(c);
 		}
+		
 		return order;
 	}
 

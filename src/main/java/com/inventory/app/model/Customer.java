@@ -29,8 +29,8 @@ public class Customer {
 	@Column(name = "uid")
 	private long uid;
 	
-	@Column(name = "amountPurchased")
-	private float amountPurchased;
+	@Column(name = "amount_purchased")
+	private float amount_purchased;
 	
 	
  
@@ -79,21 +79,22 @@ public class Customer {
 	public void setUid(long uid) {
 		this.uid = uid;
 	}
-	
-	public float getAmountPurchased() {
-		return amountPurchased;
+
+	public float getAmount_purchased() {
+		return amount_purchased;
 	}
 
-	public void setAmountPurchased(float amountPurchased) {
-		this.amountPurchased = amountPurchased;
+	public void setAmount_purchased(float amount_purchased) {
+		this.amount_purchased = amount_purchased;
 	}
+
 
 
 	public static Comparator<Customer> apComparator = new Comparator<Customer>() {         
 	    @Override         
 	    public int compare(Customer x, Customer y) {             
-	      return (y.getAmountPurchased() < x.getAmountPurchased() ? -1 :                     
-	              (y.getAmountPurchased() == x.getAmountPurchased() ? 0 : 1));           
+	      return (y.getAmount_purchased() < x.getAmount_purchased() ? -1 :                     
+	              (y.getAmount_purchased() == x.getAmount_purchased() ? 0 : 1));           
 	    }     
 	  };      
 

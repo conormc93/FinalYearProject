@@ -44,6 +44,10 @@ export class CustomerService {
     return this.http.get(`${this.baseUrl}/top/${username}`);
   }
 
+   getChartData(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/data/${username}`);
+  }
+
   deleteAll(): Observable<any> {
     return this.http.delete(`${this.baseUrl}` + `/delete`, { responseType: 'text' });
   }
