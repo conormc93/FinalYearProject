@@ -3,7 +3,6 @@ package com.inventory.app.controller;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -59,34 +58,13 @@ public class CustomerController{
 		return customers;
 	}
 
-	@GetMapping("/customers/data/{username}")
-	public Object[] getData(@PathVariable("username")String username){
-		List<Customer> customers = new ArrayList<>();
-		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
-		Object[] a = new Object[customers.size()];
-		
-		for(Customer c: customers) {
-			
-			String as = ("'customer': " + c.getName() + ", 'amount': " + c.getAmount_purchased() + "");
-			appendValue(a, as);
-		  }	
-		return a;
-	}
-
-	private Object[] appendValue(Object[] obj, Object newObj) {
-
-	ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList(obj));
-	temp.add(newObj);
-	return temp.toArray();
-
-  }
 	@GetMapping("/customers/top/{username}")
 	public List<Customer> getTopCustomers(@PathVariable("username")String username){
 			
 		List<Customer> customers = new ArrayList<>();
 		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(customers::add);
 
-		 Collections.sort(customers, Customer.apComparator);
+		Collections.sort(customers, Customer.apComparator);
 		return customers;
 	}
 

@@ -1,8 +1,7 @@
 package com.inventory.app.controller;
 
-import java.util.ArrayList;
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -17,7 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +25,6 @@ import com.inventory.app.message.request.LoginForm;
 import com.inventory.app.message.request.SignUpForm;
 import com.inventory.app.message.response.JwtResponse;
 import com.inventory.app.message.response.ResponseMessage;
-import com.inventory.app.model.Customer;
 import com.inventory.app.model.Role;
 import com.inventory.app.model.RoleName;
 import com.inventory.app.model.User;

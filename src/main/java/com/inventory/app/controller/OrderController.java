@@ -1,7 +1,6 @@
 package com.inventory.app.controller;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,32 +72,11 @@ public class OrderController {
 			
 		List<Order> orders = new ArrayList<>();
 		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
-
-		int a = orders.size();
 		
-		if(a > 5) {
-			return orders.subList(0, 4);
+		if(orders.size() > 5) {
+			return orders.subList(orders.size() - 6, orders.size() - 1 );
 		}
 		return orders;
-	}
-	
-	@GetMapping("/orders/top/{username}")
-	public List<Customer> getTopCustomers(@PathVariable("username")String username){
-			
-		List<Customer> customers = new ArrayList<>();
-		List<Order> orders = new ArrayList<>();
-		repository.findByUid(userRepo.findAllByUsername(username).getId()).forEach(orders::add);
-
-		for(Order o: orders){
-			
-		}
-
-		int a= customers.size();
-		
-		if(a > 5) {
-			return customers.subList((customers.size() - 4), customers.size());
-		}
-		return customers;
 	}
 
 	@PostMapping(value = "/orders/{username}/create")
@@ -136,12 +114,6 @@ public class OrderController {
 			
 			c.setAmount_purchased(c.getAmount_purchased() + order.getTotal());
 			CustRepository.save(c);
-		}
-		
-		List<Customer> xs = new ArrayList<>();
-		CustRepository.findAll().forEach(xs::add);
-		for(Customer x: xs) {
-			gson.toJson(x.getName(), new FileWriter(file));	
 		}
 		
 		return order;

@@ -19,12 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inventory.app.model.Customer;
 import com.inventory.app.model.Product;
 import com.inventory.app.repository.ProductRepository;
 import com.inventory.app.repository.UserRepository;
 
-import static java.lang.Math.toIntExact;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

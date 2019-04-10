@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { Order } from '../_models/order';
 import { OrderService } from '../_services/order.service';
 import { CustomerService } from '../_services/customer.service';
 import { Customer } from '../_models/customer';
-
-import { NgZone } from "@angular/core";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -36,7 +34,10 @@ export class HomeComponent implements OnInit {
     };
 
     this.reloadData();
+    
   }
+
+  
 
 
   ngAfterViewInit() {
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
       pieSeries.dataFields.category = "customer";
       this.chart = chart;
     });
+
   }
 
   ngOnDestroy() {
