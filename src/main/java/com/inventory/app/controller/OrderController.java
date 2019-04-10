@@ -45,9 +45,6 @@ public class OrderController {
 	@Autowired
     ProductRepository productRepo;
 	
-	Gson gson = new Gson();
-	File file = new File("piechart.json");
-
 	@GetMapping("/orders")
 	public List<Order> getAllProducts() {
 		System.out.println("Get all Orders...");
