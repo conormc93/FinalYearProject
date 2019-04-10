@@ -1,0 +1,53 @@
+<div *ngIf="info.token; else loggedOut">
+  <p>
+    <strong> Welcome</strong> {{info.username}}<br/>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+    </p>
+
+  <div id="home">
+  <div class="column" >
+    <p><strong> Your Recent Orders</strong> </p>
+    <div *ngFor="let order of orders | async" >
+        <div *ngIf="order" >
+          <table >
+          <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+          </tr>
+          <tr>
+            <td>{{order.oid}}</td>
+            <td>{{order.cname}}</td>
+            <td>{{order.pname}}</td>
+          </tr>
+          </table>
+        </div> <!-- div close for ngif order -->
+      </div> <!-- div close for ngfor -->
+    </div> <!-- div close for column -->
+
+    <div class="column">
+    <p>  <strong> Your Top Customers</strong> </p>
+      <div *ngFor="let customer of customers | async" >
+        <div *ngIf="customer" >
+            <table >
+            <tr>
+              <th>Customer</th>
+              <th>Total Purchased</th>
+            </tr>
+            <tr>
+              <td>{{customer.name}}</td>
+              <td>€{{customer.amount_purchased}}</td>
+            </tr>
+            </table>
+          </div><!-- div close for ngif -->
+        </div><!-- div close for ngfor -->
+    </div> <!-- div close for column -->
+
+    <div id="chartdiv" style="width: 50%; height: 500px"></div>
+  </div> <!-- div close for home -->
+</div> 
+<!-- div close for welcome --> 
+  
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

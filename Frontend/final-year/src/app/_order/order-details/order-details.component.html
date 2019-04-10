@@ -1,0 +1,26 @@
+<div *ngIf="order">
+    <div>
+      <label>Order ID: </label> {{order.oid}}
+    </div>
+    <div>
+      <label>Customer's Name: </label> {{order.cname}}
+    </div>
+    <div>
+      <label>Products: </label> {{order.pname}}
+    </div>
+    <div>
+      <label>Amount: </label> {{order.amount}}
+    </div>
+    <div>
+      <label>Total: </label> {{order.total}}
+    </div>
+    <div>
+      <label>Profit: </label> {{order.profit}}
+    </div>
+
+   <div>
+    <button type="button" class="button btn-danger" (click)='deleteOrder()'>Delete</button>
+  </div>
+  
+    <hr/>
+  </div>
