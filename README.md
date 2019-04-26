@@ -40,7 +40,7 @@ Click below to view our Dissertation.
 
 
 # Architecture<a name = "arc"></a>
-The following is an overview of the Architectureof our application.
+The following is an overview of the Architecture of our application.
 
 <p align="center"><kbd><img src="Images/architecture.PNG"></p></kbd>
 
