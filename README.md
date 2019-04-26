@@ -82,42 +82,42 @@ The following images are previews of various pages in our application.
 
 ##### Login Page
 This is the landing page for our application and lets the user login using JWT authentication and Spring Security.
-| <img src="Images/loginPage.PNG" width="350" height="600"/> |
+| <img src="Images/loginPage.PNG" /> |
 
 ---
 ##### Sign Up Page
 This is the sign up page for our application and lets the user register using the same method for authentication as above.
-| <img src="Images/signupPage.PNG" width="350" height="600"/> |
+| <img src="Images/signupPage.PNG" /> |
 
 ---
 ##### Customers Page
 Here we can view the list of custmers for the current user.
-| <img src="Images/customerPage.PNG" width="350" height="600"/> |
+| <img src="Images/customerPage.PNG" /> |
  
 ---
 ##### Create Customer
 This page lets the user input form data for another customer.
-| <img src="Images/createCustomer.PNG" width="350" height="600"/> |
+| <img src="Images/createCustomer.PNG" /> |
 
 ---
 ##### Products Page
 This page lets the current user view prodcuts that they currently offer.
-| <img src="Images/productPage.PNG" width="350" height="600"/> |
+| <img src="Images/productPage.PNG" /> |
 
 ---
 ##### Create Product
 This page allows the user to add to the existing list of products.
-| <img src="Images/createProduct.PNG" width="350" height="600"/> |
+| <img src="Images/createProduct.PNG"/> |
 
 ---
 ##### Orders Page
 This page lets the current user view orders that they have already placed for their customers..
-| <img src="Images/orderPage.PNG" width="350" height="600"/> |
+| <img src="Images/orderPage.PNG"/> |
 
 ---
 ##### Create Order
 This page allows the user to create an order based off the prodcuts made available by the user.
-| <img src="Images/createOrder.PNG" width="350" height="600"/> |
+| <img src="Images/createOrder.PNG"/> |
 
 # Deployment<a name = "deploy"></a>
 
