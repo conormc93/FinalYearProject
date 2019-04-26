@@ -36,13 +36,13 @@ Inventory Management System Application. We chose this topic as Inventory Manage
 # Dissertation<a name = "dissertation"></a>
 Click below to view our Dissertation.
 
-<kbd>[<img src="Images/dissertation.png"></img>]()</kbd>
+<kbd>[<img src="https://github.com/conormc93/FinalYearProject/Images/dissertation.png"></img>]()</kbd>
 
 
 # Architecture<a name = "arc"></a>
 The following is an overview of the Architectureof our application.
 
-<p align="center"><kbd><img src="Images/architecture.png"></p></kbd>
+<p align="center"><kbd><img src="https://github.com/conormc93/FinalYearProject/Images/architecture.png"></p></kbd>
 
 ### Frontend
 
