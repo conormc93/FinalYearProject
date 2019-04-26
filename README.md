@@ -36,13 +36,13 @@ Inventory Management System Application. We chose this topic as Inventory Manage
 # Dissertation<a name = "dissertation"></a>
 Click below to view our Dissertation.
 
-<kbd>[<img src="https://github.com/conormc93/FinalYearProject/Images/dissertation.png"></img>]()</kbd>
+<kbd>[<img src="Images/dissertation.PNG"></img>]()</kbd>
 
 
 # Architecture<a name = "arc"></a>
 The following is an overview of the Architectureof our application.
 
-<p align="center"><kbd><img src="https://github.com/conormc93/FinalYearProject/Images/architecture.png"></p></kbd>
+<p align="center"><kbd><img src="Images/architecture.PNG"></p></kbd>
 
 ### Frontend
 
@@ -75,42 +75,42 @@ The following images are previews of various pages in our application.
 
 * Login Page
 
-| <img src="Images/loginPage.png" width="350" height="600"/> |
+| <img src="Images/loginPage.PNG" width="350" height="600"/> |
 
 
 * Sign Up Page
 
-| <img src="Images/signupPage.png" width="350" height="600"/> |
+| <img src="Images/signupPage.PNG" width="350" height="600"/> |
 
 
 * Customers Page
 
-| <img src="Images/customerPage.png" width="350" height="600"/> |
+| <img src="Images/customerPage.PNG" width="350" height="600"/> |
  
 
 * Create Customer
 
-| <img src="Images/createCustomer.png" width="350" height="600"/> |
+| <img src="Images/createCustomer.PNG" width="350" height="600"/> |
 
 
 * Products Page
 
-| <img src="Images/productPage.png" width="350" height="600"/> |
+| <img src="Images/productPage.PNG" width="350" height="600"/> |
 
 
 * Create Product
 
-| <img src="Images/createProduct.png" width="350" height="600"/> |
+| <img src="Images/createProduct.PNG" width="350" height="600"/> |
 
 
 * Orders Page
 
-| <img src="Images/orderPage.png" width="350" height="600"/> |
+| <img src="Images/orderPage.PNG" width="350" height="600"/> |
 
 
 * Create Order
 
-| <img src="Images/createOrder.png" width="350" height="600"/> |
+| <img src="Images/createOrder.PNG" width="350" height="600"/> |
 
 # Deployment<a name = "deploy"></a>
 
