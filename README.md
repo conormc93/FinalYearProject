@@ -36,12 +36,12 @@ For our final year project, we wanted to look at Inventory Management Systems an
 
 
 #### Video Demo<a name = "demo"></a>
-
+Our video demo is located in the InventoryMangementSystem.mp4 file.
 
 #### Dissertation<a name = "dissertation"></a>
 Click below to view our Dissertation.
 
-<kbd>[<img src="Images/dissertation.PNG"></img>]()</kbd>
+<kbd>[<img src="Images/dissertation.PNG"></img>](https://github.com/conormc93/FinalYearProject/blob/master/Dissertation.pdf)</kbd>
 
 
 # Architecture<a name = "arc"></a>
